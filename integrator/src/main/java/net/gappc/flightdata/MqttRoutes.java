@@ -128,7 +128,7 @@ public class MqttRoutes extends RouteBuilder {
                 .get()
                 .route()
                 .routeId("[Route: REST FD scheduled]")
-                .to("sql:select id, company, timestamp, rawdata::text as rawdata from flightdata_scheduled order by timestamp desc")
+                .to("sql:select id, timestamp, company, date, time, flight_number, departure, arrival, remark, rawdata::text as rawdata from flightdata_scheduled order by timestamp desc")
                 .marshal()
                 .json()
                 .log(">>> ${body}");
